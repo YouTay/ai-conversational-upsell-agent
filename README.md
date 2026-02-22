@@ -164,16 +164,18 @@ Die Architektur ist cloudfähig konzipiert und kann erweitert werden durch:
 ---
 
 ## Repository-Struktur
+
+```text
 .
 ├── README.md
 ├── screenshots/
-│ ├── agent-first-message.png
-│ ├── dynamic-carousal.png
-│ ├── Upsell-Question.png
-│ ├── Upsell-dynamic-carousal.png
-│ └── Prompt-settings.PNG
+│   ├── agent-first-message.png
+│   ├── dynamic-carousal.png
+│   ├── Upsell-Question.png
+│   ├── Upsell-dynamic-carousal.png
+│   └── Prompt-settings.PNG
 └── docs/
-└── architecture-description.md
+    └── architecture-description.md
 
 
 ---
