@@ -1,133 +1,190 @@
-I Produktberater – Conversational Commerce Agent
+# AI Conversational Upsell Agent
 
-Dieses Projekt zeigt die Konzeption und Umsetzung eines LLM-gestützten Conversational-AI-Agents für eine E-Commerce-Website. Der Agent unterstützt Kunden bei der Produktauswahl, liefert kontextbezogene Empfehlungen und führt gezieltes Upselling durch dynamische Produktvorschläge mit direkten Kaufoptionen durch.
+## Überblick
 
-Ziel war die Demonstration einer produktionsnahen Conversational-AI-Architektur mit Fokus auf Verkaufsberatung, Knowledge-Integration und skalierbarer Cloud-Perspektive.
+Dieses Projekt zeigt die Konzeption und Umsetzung eines LLM-basierten Conversational-AI-Agents für eine E-Commerce-Website.  
+Der Agent berät Kunden bei der Produktauswahl, schlägt kontextabhängig passende Zusatzprodukte vor und führt dynamisches Upselling über interaktive Produkt-Carousels durch.
 
-Projektziel
+Ziel ist die Steigerung von Conversion Rate und Average Order Value durch strukturierte, dialogbasierte Verkaufslogik sowie die Demonstration einer produktionsnahen AI-Agent-Architektur.
 
-Automatisierte Produktberatung im Online-Shop
+---
 
-Kontextbasiertes Cross- und Upselling
+## Projektziele
 
-Verbesserung der Customer Experience
+- Automatisierte Produktberatung im Online-Shop  
+- Kontextbasiertes Cross- und Upselling  
+- Verbesserung der Customer Experience  
+- Reduzierung manueller Support-Anfragen  
+- Demonstration moderner LLM-Integration in reale Business-Workflows  
 
-Reduktion manueller Kundenservice-Anfragen
+---
 
-Demonstration moderner Conversational-AI- und LLM-Integration für Cloud-/AI-Engineering-Use-Cases
+## Beispielhafter Gesprächsverlauf
 
-Systemarchitektur
-Conversational AI Layer
+### 1. Erste Interaktion des Agents
 
-Agent Orchestrierung über Voiceflow
+![Initiale Agent-Interaktion](screenshots/agent-first-message.png)
 
-LLM: Claude 4 Sonnet
+Der Agent begrüßt den Nutzer und bietet vordefinierte Produktkategorien zur schnellen Navigation an.
 
-Temperatur: 0,3 zur kontrollierten Antwortgenerierung
+---
 
-Max Tokens: 5000
+### 2. Dynamische Produktempfehlung (Hauptprodukt)
 
-Prompt Engineering für verkaufsorientierte, einfache Kommunikation
+![Dynamisches Produkt-Carousel](screenshots/dynamic-carousal.png)
 
-Frontend Integration
+Der Agent zeigt kontextabhängig:
 
-Chat-Widget Integration über Voiceglow
+- Produktbild  
+- Kurzbeschreibung  
+- Preis  
+- Direktlink zum Produkt  
+- Interaktive Buttons zur weiteren Navigation  
 
-Dynamische Produkt-Carousels mit:
+---
 
-Produktbild
+### 3. Gezielte Upsell-Frage
 
-Kurzbeschreibung
+![Upsell-Frage](screenshots/Upsell-Question.png)
 
-Preis (falls verfügbar)
+Nach Auswahl eines Hauptprodukts stellt der Agent eine gezielte Zusatzfrage, um passendes Zubehör vorzuschlagen.
 
-Direktlink zum Shop
+---
 
-Interaktive Buttons zur Gesprächssteuerung
+### 4. Dynamisches Upsell-Carousel
 
-Knowledge Base / Retrieval
+![Upsell Produkt-Carousel](screenshots/Upsell-dynamic-carousal.png)
 
-Produktdaten aus Shopify-Exporten
+Das Zubehör wird ebenfalls dynamisch als strukturiertes Produkt-Carousel dargestellt.
 
-Ergänzende Website-Knowledge-Base für erklärende Inhalte
+---
 
-Retrieval-basierte Produktauswahl (RAG-ähnlicher Ansatz)
+## Systemarchitektur
 
-Strikte Trennung zwischen Produktdaten und erklärenden Textquellen
+### Conversational Layer
 
-Conversational Design Prinzipien
-Sprachgestaltung
+- Orchestrierung über Voiceflow  
+- LLM: Claude 4 Sonnet  
+- Temperatur: 0,3 (kontrollierte, stabile Antworten)  
+- Max Tokens: 5000  
+- Prompt Engineering mit klarer Verkaufslogik und Antwortstruktur  
 
-Einfache Sprache (A2–B1 Niveau)
+---
 
-Maximal zwei kurze Sätze pro Antwort
+### LLM Konfiguration
 
-Freundlich, beratend, nicht aufdringlich
+![LLM Konfiguration](screenshots/Prompt-settings.PNG)
 
-Fokus auf klare Handlungsempfehlungen
+Konfigurationsparameter:
 
-Verkaufslogik
+- Modell: Claude 4 Sonnet  
+- Temperatur: 0,3  
+- Max Tokens: 5000  
 
-Der Agent erkennt Produktinteressen und schlägt kontextabhängig ergänzende Produkte vor, beispielsweise:
+Diese Einstellungen ermöglichen kontrollierte, konsistente und verkaufsorientierte Antworten.
 
-Flipchart → Marker → Zubehör → Transportlösung
+---
 
-Marker → Aufbewahrung → Nachfülloptionen
+### Knowledge Base / Retrieval
 
-Moderationsprodukte → Zubehörsets
+- Strukturierte Produktdaten aus Shopify-Export  
+- Website-basierte Knowledge Base für erklärende Inhalte  
+- Retrieval-basierte Produktauswahl  
+- Strikte Regel: Nur Produkte mit vorhandener URL und Bild werden angezeigt  
 
-Präsentationssysteme → Transport- und Erweiterungszubehör
+Extrahierte Produktfelder:
+
+- TITLE  
+- DESCRIPTION  
+- IMAGE  
+- URL  
+
+---
+
+## Conversational Design Prinzipien
+
+### Sprachgestaltung
+
+- Einfache Sprache (A2–B1 Niveau)  
+- Maximal zwei kurze Sätze pro Antwort  
+- Freundlich, beratend, nicht aufdringlich  
+- Keine Fachbegriffe, kein Marketingfluff  
+
+### Verkaufslogik
+
+Beispielhafte Cross-Selling-Ketten:
+
+- Flipchart → Marker → Zubehör → Transportlösung  
+- Marker → Aufbewahrung → Nachfülloption  
+- Moderationskarten → Marker → Zubehörset  
+- Pinwand → Pins → Transportzubehör  
 
 Regeln:
 
-Pro Interaktion maximal eine konkrete Upsell-Empfehlung
+- Pro Schritt nur eine konkrete Zusatzempfehlung  
+- Jede Empfehlung endet mit einer Entscheidungsfrage  
+- Zubehör wird immer kontextbezogen begründet  
+- Alternativen in verschiedenen Preisklassen möglich  
 
-Jede Empfehlung endet mit einer Entscheidungsfrage
+---
 
-Alternativen in verschiedenen Preisklassen möglich
+## Technische Schwerpunkte
 
-Empfehlung immer mit praktischem Nutzen begründet
+- LLM-gestützte Conversational-Commerce-Lösung  
+- Retrieval-Augmented Produktberatung  
+- Strukturierte Prompt-Architektur  
+- Dynamische UI-Integration von Produktdaten  
+- Deterministische Steuerung durch Temperatur-Optimierung  
+- Production-nahe Web-Integration  
 
-Technische Schwerpunkte
+---
 
-LLM-basierte Conversational Commerce Lösung
+## Relevanz für AI- und Cloud-Engineering
 
-Retrieval-Augmented Produktberatung
+Dieses Projekt demonstriert praxisnahe Kompetenzen in:
 
-Prompt Engineering für strukturierte Verkaufsdialoge
+- Integration großer Sprachmodelle in Business-Prozesse  
+- Conversational-AI-Architektur  
+- Knowledge-Base-Integration  
+- UX-Optimierung für AI-Systeme  
+- Skalierbare AI-Design-Prinzipien  
 
-UI-Integration dynamischer Produktdaten
+---
 
-Response-Kontrolle über Token- und Temperaturparameter
+## Cloud-Perspektive / Erweiterungsmöglichkeiten
 
-Production-nahe Chatbot-Integration in bestehende Webumgebung
+Die Architektur ist cloudfähig konzipiert und kann erweitert werden durch:
 
-Relevanz für AI- und Cloud-Engineering
+- Migration auf Azure OpenAI  
+- Integration von Azure AI Search (Vektorsuche)  
+- Serverless Middleware über Azure Functions  
+- Monitoring und Telemetrie  
+- Mehrsprachige AI-Agenten  
 
-Dieses Projekt demonstriert praxisrelevante Kompetenzen in folgenden Bereichen:
+---
 
-Integration großer Sprachmodelle in Business-Workflows
+## Repository-Struktur
+.
+├── README.md
+├── screenshots/
+│ ├── agent-first-message.png
+│ ├── dynamic-carousal.png
+│ ├── Upsell-Question.png
+│ ├── Upsell-dynamic-carousal.png
+│ └── Prompt-settings.PNG
+└── docs/
+└── architecture-description.md
 
-Conversational-AI-Architektur und Agent Design
 
-Knowledge-Base-Integration und strukturierte Datennutzung
+---
 
-UX-Optimierung für AI-gestützte Beratungssysteme
+## Zusammenfassung
 
-Deployment-nahe Chatbot-Integration im Web-Kontext
+Der AI Conversational Upsell Agent kombiniert:
 
-Cloud-Perspektive / Erweiterungsmöglichkeiten
+- LLM-basierte Dialogsteuerung  
+- Strukturierte Produktdaten  
+- Dynamische UI-Integration  
+- Systematische Upsell-Logik  
 
-Die Architektur ist cloudfähig konzipiert und kann problemlos erweitert werden, beispielsweise durch:
-
-Migration zu Azure OpenAI Services
-
-Integration von Azure AI Search oder Vektordatenbanken
-
-Serverless Middleware über Azure Functions
-
-Monitoring, Telemetrie und Logging
-
-Mehrsprachige Conversational-AI-Systeme
-
-Diese Erweiterungen würden eine produktionsreife Enterprise-AI-Architektur ermöglichen.
+Das Projekt zeigt eine realitätsnahe Umsetzung eines AI-basierten Sales-Systems und demonstriert Fähigkeiten im Bereich Conversational AI, Prompt Engineering, Retrieval-Integration und Cloud-orientierter Architektur.
