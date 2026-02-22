@@ -163,20 +163,13 @@ Die Architektur ist cloudfähig konzipiert und kann erweitert werden durch:
 
 ---
 
-## Repository-Struktur
+## Business Impact
 
-```text
-.
-├── README.md
-├── screenshots/
-│   ├── agent-first-message.png
-│   ├── dynamic-carousal.png
-│   ├── Upsell-Question.png
-│   ├── Upsell-dynamic-carousal.png
-│   └── Prompt-settings.PNG
-└── docs/
-    └── architecture-description.md
-
+- Automatisierte Produktberatung
+- Automatisierte Umsatzsteigerung
+- Systematisches Cross- und Upselling
+- Verbesserung der Customer Journey
+- Reduktion manueller Support-Anfragen
 
 ---
 
